@@ -144,7 +144,8 @@ app.post('/addevent',[authenticate],async function(req,res){
     try {
         let client = await mongoClient.connect(url);
         let db = client.db("diary");
-        await db.collection("events").insertOne({event:req.body.event,description:req.body.description,date:req.body.date,userid:req.userid})
+        const data=await db.collection("events").insertOne({event:req.body.event,description:req.body.description,date:req.body.date,userid:req.userid})
+        console.log(data)
         client.close();
         res.json({
             message:"Event Added"
@@ -272,7 +273,7 @@ app.put('/editevent/:id',[authenticate],async function(req,res){
     try {
         let client = await mongoClient.connect(url);
         let db = client.db("diary");
-        await db.collection("notes").findOneAndUpdate({_id:mongodb.ObjectId(req.params.id),userid:req.userid},{$set:{event:req.body.event,description:req.body.description,date:req.body.date}})
+        await db.collection("events").findOneAndUpdate({_id:mongodb.ObjectId(req.params.id),userid:req.userid},{$set:{event:req.body.event,description:req.body.description,date:req.body.date}})
         client.close();
         res.json({
             message:"Updated"
