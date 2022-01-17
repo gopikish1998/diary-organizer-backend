@@ -422,7 +422,7 @@ app.post('/register', async function (req,res){
             to:req.body.email,
             subject:"Confirm Email!",
             html:`<h1>Hey there!</h1>
-            Verify your account for Recipe-app: <a href=${url}>${url}</a>`
+            Verify your account for Diary-Organizer website: <a href=${url}>${url}</a>`
         })
         console.log("Email sent") 
             res.json({
@@ -447,7 +447,7 @@ app.post('/register', async function (req,res){
             to:req.body.email,
             subject:"Confirm Email!",
             html:`<h1>Hey there!</h1>
-            Verify your account for Recipe-app: <a href=${url}>${url}</a>`
+            Verify your account for Diary-Organizer website: <a href=${url}>${url}</a>`
         })
         console.log("Email sent")
         res.json({
